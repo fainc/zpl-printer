@@ -285,7 +285,7 @@ func (rec *Printer) PrintConfigurationLabel() (err error) {
 	return
 }
 
-func (rec *Printer) GetPrinterStatus() (value int32, err error) {
+func (rec *Printer) GetPrinterStatus() (value int, err error) {
 	if err = rec.HasError(ErrPort); err != nil {
 		return
 	}
@@ -295,5 +295,5 @@ func (rec *Printer) GetPrinterStatus() (value int32, err error) {
 		err = fmt.Errorf("get printer status failed,err code:%v", int32(ret))
 		return
 	}
-	return int32(buffer), nil
+	return StatusDecode(buffer), nil
 }

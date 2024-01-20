@@ -93,10 +93,6 @@ func NewSDK(dllPath string) (sdk *Sdk, err error) {
 	if err != nil {
 		procError = append(procError, err)
 	}
-	p.GetPrinterStatus, err = sdk.dllSdk.FindProc("ZPL_GetPrinterStatus")
-	if err != nil {
-		procError = append(procError, err)
-	}
 	p.PrintConfigurationLabel, err = sdk.dllSdk.FindProc("ZPL_PrintConfigurationLabel")
 	if err != nil {
 		procError = append(procError, err)
