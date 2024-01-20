@@ -15,7 +15,7 @@ func String2UintPTR(s string) (ret uintptr) {
 	return
 }
 
-// StatusDecode 按位与操作后以新 int 值形式直接表示文档对应二进制值，方便理解和后续逻辑判断
+// StatusDecode 按位与操作后以新 int 值形式直接表示文档对应十进制值，方便理解和后续逻辑判断
 func StatusDecode(status uintptr) int {
 	if status == 0 { // 正常
 		return 0
