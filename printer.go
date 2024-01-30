@@ -273,6 +273,21 @@ func (rec *Printer) JoinGraphicBox(xPos, yPos, width, height, thickness, roundin
 	}
 	return
 }
+func (rec *Printer) PrintImage(xPos, yPos int, path string) (err error) {
+	if err = rec.HasError(ErrPort); err != nil {
+		return
+	}
+	ret, _, _ := rec.sdk.Proc.PrintImage.Call(rec.id,
+		uintptr(xPos),
+		uintptr(yPos),
+		String2UintPTR(path),
+	)
+	if ret != 0 {
+		err = fmt.Errorf("print image failed,err code:%v", int32(ret))
+		return
+	}
+	return
+}
 func (rec *Printer) PrintConfigurationLabel() (err error) {
 	if err = rec.HasError(ErrPort); err != nil {
 		return
